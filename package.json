@@ -1,0 +1,14 @@
+{
+  "name": "30-day-javascript-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A practical 30-day modern JavaScript learning project.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/day_001/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
