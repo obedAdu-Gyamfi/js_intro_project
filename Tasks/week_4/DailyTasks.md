@@ -1,63 +1,181 @@
 # Week 4: Advanced JavaScript, Modules, Errors, and Capstone
 
-This companion page expands the Week 4 roadmap in the root [README](../../README.md). Every task produces a runnable `.js` file under `src/day_NNN/` and tests under `tests/` where appropriate.
+This week organizes code, strengthens reliability, and turns the learned concepts into a finished project. Complete each day in `src/day_NNN/` and test important behavior in `tests/`.
 
-| Day | Build | Core concepts | Stretch goal |
-|---|---|---|---|
-| 22 | Modular application | ES modules, imports, exports | Define a small public API |
-| 23 | Domain model | Classes, factories, composition | Compare composition with inheritance |
-| 24 | Validation layer | Custom errors, error boundaries | Add structured error codes |
-| 25 | Input validator | Regular expressions, normalization | Explain every expression with examples |
-| 26 | Tested utility library | `node:test`, assertions, test design | Add Vitest and coverage |
-| 27 | Capstone foundation | Data model, persistence, architecture | Separate UI, state, and services |
-| 28 | Capstone implementation | Core feature and happy path | Add a CLI or responsive browser mode |
-| 29 | Capstone hardening | Validation, errors, loading, accessibility | Test edge cases and network failure |
-| 30 | Demo and reflection | Documentation, presentation, next steps | Publish a polished project README |
+## Day 22: ES Modules
 
-## Daily Task Details
+### Requirements
 
-### Day 22: Modular Application
+- Create `src/day_022/` with at least two modules and a README.
+- Use named imports and exports.
+- Keep the entry point focused on composition.
 
-Split an existing program into modules with clear responsibilities. Export only the functions or values other modules need. Use relative imports consistently and document the module boundaries.
+### Tasks
 
-### Day 23: Domain Model
+- Export a function from a utility module.
+- Import it into an application module.
+- Separate data, logic, and presentation responsibilities.
+- Avoid circular dependencies.
 
-Model a small domain such as tasks, expenses, books, or recipes. Use classes or factory functions where they clarify behavior, and favor composition when objects have independent responsibilities.
+### Challenge
 
-### Day 24: Validation Layer
+Split a previous week’s program into a small modular application with a clear public API.
 
-Create custom error classes or structured error objects for invalid input and missing resources. Decide where errors should be caught, logged, displayed, or allowed to reach the caller.
+## Day 23: Classes and Composition
 
-### Day 25: Input Validator
+### Requirements
 
-Build a validator for form or command-line input. Normalize values before validating them, return useful messages, and test empty, malformed, boundary, and valid inputs.
+- Create `src/day_023/index.js` with a small domain model.
+- Use a class or factory only where it clarifies behavior.
+- Test creation, updates, and invalid state.
 
-### Day 26: Tested Utility Library
+### Tasks
 
-Choose several pure functions from the previous weeks and organize them as a small utility module. Write focused tests for normal values, edge cases, invalid input, and expected errors using Node's built-in test runner.
+- Define a constructor and instance method.
+- Use private fields or closure state where appropriate.
+- Compose objects from smaller behaviors.
+- Compare composition with inheritance in the README.
 
-### Day 27: Capstone Foundation
+### Challenge
 
-Choose a practical project such as a habit tracker, expense tracker, recipe finder, study planner, or issue board. Define the user story, data model, core modules, storage approach, and acceptance criteria before coding.
+Build a domain model for tasks, expenses, books, or recipes with operations that reflect real user actions.
 
-### Day 28: Capstone Implementation
+## Day 24: Error Handling
 
-Build the main happy path end to end. Keep domain logic independent from the DOM or command-line layer, and commit a working version before adding optional features.
+### Requirements
 
-### Day 29: Capstone Hardening
+- Create `src/day_024/index.js` with intentional error types.
+- Handle errors at the correct boundary.
+- Test both expected and unexpected failures.
 
-Add validation, error handling, loading and empty states, automated tests, and accessible interaction. Check the project on small screens if it has a browser interface, and test failure paths intentionally.
+### Tasks
 
-### Day 30: Demo and Reflection
+- Throw and catch an `Error`.
+- Create a custom error class or structured error object.
+- Preserve useful error messages and codes.
+- Decide which errors should reach the user.
 
-Document setup, usage, architecture, known limitations, and future improvements. Demonstrate the project, explain one difficult concept you overcame, and write a concrete next-step plan.
+### Challenge
 
-## Daily Deliverables
+Build a validation service that reports distinct errors for invalid input, missing resources, and unavailable actions.
 
-- A runnable entry point such as `src/day_022/index.js`.
-- A short `src/day_NNN/README.md` explaining the design.
-- Focused tests in `tests/` for important behavior and edge cases.
-- Clear error handling for invalid or unexpected input.
-- For Days 27-30, a capstone README with setup, usage, and acceptance criteria.
+## Day 25: Validation and Regular Expressions
 
-Run Node tasks with `node src/day_022/index.js` and the test suite with `npm test`.
+### Requirements
+
+- Create `src/day_025/index.js` with a validator.
+- Normalize input before checking it.
+- Test empty, malformed, boundary, and valid values.
+
+### Tasks
+
+- Trim and normalize strings.
+- Write a regular expression for one constrained format.
+- Return multiple validation messages without crashing.
+- Keep validation separate from display.
+
+### Challenge
+
+Build a form or command-line input validator for a profile, registration form, or expense entry.
+
+## Day 26: Automated Testing
+
+### Requirements
+
+- Create `src/day_026/` and at least one test file in `tests/`.
+- Use Node's built-in `node:test` and `node:assert/strict`.
+- Cover normal, edge, and expected-error behavior.
+
+### Tasks
+
+- Write a focused unit test for a pure function.
+- Group related tests with descriptive names.
+- Test an asynchronous function.
+- Identify one behavior that is not worth testing yet and explain why.
+
+### Challenge
+
+Build a small tested utility library by extracting and improving functions from the previous weeks.
+
+## Day 27: Capstone Foundation
+
+### Requirements
+
+- Create the capstone folder and a project README.
+- Define a user story, data model, acceptance criteria, and file plan.
+- Choose browser, Node.js, or a small hybrid format.
+
+### Tasks
+
+- Choose a practical project such as a habit tracker, expense tracker, recipe finder, study planner, or issue board.
+- Sketch the main state and user actions.
+- Identify pure logic, persistence, and interface modules.
+- Create sample data and one failing acceptance test.
+
+### Challenge
+
+Build the capstone foundation: a working data model, initial module structure, and one complete user story from input to stored state.
+
+## Day 28: Capstone Core Feature
+
+### Requirements
+
+- Implement the primary happy path.
+- Keep domain logic independent from the interface where possible.
+- Add tests for the core feature.
+
+### Tasks
+
+- Connect input to state changes.
+- Render or print updated state.
+- Add persistence with a file or `localStorage` when appropriate.
+- Commit a working version before optional features.
+
+### Challenge
+
+Build the capstone’s main feature end to end so a new user can complete the central task successfully.
+
+## Day 29: Capstone Hardening
+
+### Requirements
+
+- Add validation, errors, loading or empty states, and edge-case tests.
+- Check keyboard and focus behavior for browser projects.
+- Record known limitations in the README.
+
+### Tasks
+
+- Test missing, malformed, duplicate, and boundary input.
+- Handle failed storage or network operations.
+- Improve messages for users and developers.
+- Review the interface at a small viewport when applicable.
+
+### Challenge
+
+Harden the capstone so it remains understandable and usable when users make mistakes or dependencies fail.
+
+## Day 30: Demo and Reflection
+
+### Requirements
+
+- Finalize the project README with setup and usage instructions.
+- Include a test command and known limitations.
+- Prepare a short demonstration and written reflection.
+
+### Tasks
+
+- Remove dead code and clarify names.
+- Run the full test suite.
+- Review the project against its acceptance criteria.
+- Write three next-step learning goals.
+
+### Challenge
+
+Ship and present the finished capstone. Demonstrate the core workflow, explain one difficult concept you overcame, and show how the project could grow.
+
+## Week 4 Completion Check
+
+- Days 22-26 demonstrate modular design, errors, validation, and tests.
+- Days 27-30 produce a documented, tested capstone.
+- The final project has a runnable command, clear usage, and known limitations.
+- You can explain the design decisions instead of only describing the final output.

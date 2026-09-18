@@ -1,53 +1,143 @@
 # Week 3: Asynchronous JavaScript and Events
 
-This companion page expands the Week 3 roadmap in the root [README](../../README.md). Every task produces a runnable `.js` file under `src/day_NNN/`; browser tasks may also include an HTML entry point.
+This week explains how JavaScript handles delayed work, network requests, and user events. Complete each day in `src/day_NNN/`; place focused tests in `tests/`.
 
-| Day | Build | Core concepts | Stretch goal |
-|---|---|---|---|
-| 15 | Event-loop trace | Callbacks, timers, execution order | Predict output before running it |
-| 16 | Promise delay | Promise construction and settlement | Add explicit failure paths |
-| 17 | Async workflow | `async`/`await`, `Promise.all` | Compare sequential and parallel timing |
-| 18 | API viewer | Fetch API, JSON, rendering | Add search and pagination |
-| 19 | Resilient request | HTTP errors, `try`/`catch`, retries | Add capped exponential backoff |
-| 20 | Event-driven list | Events, delegation, dynamic elements | Add keyboard and focus behavior |
-| 21 | API-powered app | Integration checkpoint | Add caching and offline fallback |
+## Day 15: The Event Loop
 
-## Daily Task Details
+### Requirements
 
-### Day 15: Event-Loop Trace
+- Create `src/day_015/index.js` and a README.
+- Predict the output order before running the program.
+- Explain synchronous code, microtasks, and timer tasks.
 
-Write a program using synchronous logs, `setTimeout`, and Promise callbacks. Predict the output order in your README before running it, then explain the call stack, task queue, and microtask queue.
+### Tasks
 
-### Day 16: Promise Delay
+- Add synchronous `console.log` statements.
+- Schedule work with `setTimeout`.
+- Schedule Promise callbacks with `.then()`.
+- Record the actual output and compare it with your prediction.
 
-Create a `wait(ms)` Promise and use it to simulate a delayed operation. Add a second operation that can reject, then consume both outcomes with `.then()` and `.catch()`.
+### Challenge
 
-### Day 17: Async Workflow
+Build an event-loop trace program that clearly demonstrates why synchronous logs, Promise callbacks, and timers run in their observed order.
 
-Rewrite a Promise chain with `async`/`await`. Run independent operations with `Promise.all`, and compare that result with sequential execution. Make sure a rejected operation is handled at the correct boundary.
+## Day 16: Promises
 
-### Day 18: API Viewer
+### Requirements
 
-Use `fetch` to request data from a public API and render useful fields in a browser interface or Node.js script. Show a loading state before the request and an empty state when no records are returned.
+- Create `src/day_016/index.js` with a reusable `wait` function.
+- Include both resolve and reject paths.
+- Test successful and failed operations.
 
-### Day 19: Resilient Request
+### Tasks
 
-Handle network failures, non-2xx HTTP responses, and invalid JSON separately. Add a retry function with a maximum number of attempts and a clear final error message.
+- Construct a Promise with `resolve` and `reject`.
+- Consume a result with `.then()`.
+- Handle failure with `.catch()`.
+- Clean up with `.finally()`.
 
-### Day 20: Event-Driven List
+### Challenge
 
-Build a list whose items can be filtered, selected, and removed. Use event delegation so one listener can handle dynamic items. Keep event handlers small and move business logic into testable functions.
+Build a delayed service simulator that resolves a result after a delay and rejects when given invalid input.
 
-### Day 21: API-Powered App
+## Day 17: Async and Await
 
-Combine fetching, async state, rendering, and events into a small application. Include loading, success, empty, and error states. Add a test for the data transformation layer even if the API itself is not tested directly.
+### Requirements
 
-## Daily Deliverables
+- Create `src/day_017/index.js` with at least one `async` function.
+- Handle errors with `try`/`catch`.
+- Compare sequential and parallel operations.
 
-- A runnable entry point such as `src/day_015/index.js`.
-- A short `src/day_NNN/README.md` documenting the asynchronous flow.
-- At least one test for a pure function or mocked asynchronous path.
-- Explicit loading, success, and error behavior where applicable.
-- A note explaining one event-loop or Promise observation.
+### Tasks
 
-Run a Node task with `node src/day_015/index.js`, or open browser tasks through their HTML entry point.
+- Convert a Promise chain to `async`/`await`.
+- Return a value from an async function.
+- Run independent operations with `Promise.all`.
+- Use `Promise.allSettled` when partial results are useful.
+
+### Challenge
+
+Build an async workflow that loads a user, preferences, and notifications, then combines them into one profile while handling a failed request.
+
+## Day 18: Fetch API
+
+### Requirements
+
+- Create `src/day_018/` with a browser entry point or Node fetch script.
+- Show loading, success, and empty states.
+- Transform response data before rendering it.
+
+### Tasks
+
+- Send a request with `fetch`.
+- Parse the response with `.json()`.
+- Check `response.ok` before using data.
+- Render selected fields instead of dumping the full response.
+
+### Challenge
+
+Build an API viewer that fetches public data and displays a useful list with loading and empty states.
+
+## Day 19: Async Errors and Retries
+
+### Requirements
+
+- Create `src/day_019/index.js` with a reusable request function.
+- Distinguish network, HTTP, and parsing failures.
+- Stop retrying after a defined maximum.
+
+### Tasks
+
+- Throw an error for a non-2xx response.
+- Catch and classify errors.
+- Retry a failed operation with a counter.
+- Return a clear final failure message.
+
+### Challenge
+
+Build a resilient request service that retries temporary failures and reports a meaningful error when the maximum attempts are exhausted.
+
+## Day 20: Events and Delegation
+
+### Requirements
+
+- Create `src/day_020/` with a browser entry point.
+- Support dynamic list items and one delegated listener.
+- Include keyboard or focus behavior.
+
+### Tasks
+
+- Listen for click and input events.
+- Read an event target safely.
+- Use event delegation on a parent element.
+- Keep event handlers thin by calling pure functions.
+
+### Challenge
+
+Build a filterable event-driven list where items can be selected and removed even after new items are added.
+
+## Day 21: API-Powered App Checkpoint
+
+### Requirements
+
+- Create `src/day_021/` with an app, README, and tests.
+- Include loading, success, empty, and error states.
+- Test the data transformation layer without depending on a live API.
+
+### Tasks
+
+- Model UI state explicitly.
+- Connect a fetch function to a render function.
+- Add search or filtering to fetched data.
+- Add a retry or refresh action.
+
+### Challenge
+
+Build a small API-powered browser app that fetches data, responds to user events, transforms results, and remains usable when the request fails.
+
+## Week 3 Completion Check
+
+- Every async challenge has an intentional success and failure path.
+- Days 15-17 demonstrate event-loop and Promise behavior.
+- Days 18-21 include loading, empty, and error UI states where applicable.
+- Tests do not require a live network connection.

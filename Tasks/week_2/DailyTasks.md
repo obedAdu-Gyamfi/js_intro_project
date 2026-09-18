@@ -1,53 +1,143 @@
 # Week 2: Functions, Objects, Scope, and Interaction
 
-This companion page expands the Week 2 roadmap in the root [README](../../README.md). Every task produces a runnable `.js` file under `src/day_NNN/`.
+This week turns small expressions into reusable programs. Complete each day in `src/day_NNN/`; place focused tests in `tests/`.
 
-| Day | Build | Core concepts | Stretch goal |
-|---|---|---|---|
-| 8 | Modular calculator | Function declarations, expressions, pure functions | Add default and rest parameters |
-| 9 | Counter factory | Scope, closures, private state | Add reset and configurable steps |
-| 10 | Library catalog | Objects, destructuring, spread, nested data | Add search and availability updates |
-| 11 | Data pipeline | `map`, `filter`, `reduce`, callbacks | Compose reusable transformation functions |
-| 12 | JSON report tool | Node `fs`, `path`, JSON parsing | Split file loading and reporting into modules |
-| 13 | Browser to-do list | DOM selection, forms, rendering, events | Persist tasks with `localStorage` |
-| 14 | Interactive dashboard | State, derived data, UI updates | Add keyboard support and empty states |
+## Day 8: Function Design
 
-## Daily Task Details
+### Requirements
 
-### Day 8: Modular Calculator
+- Create `src/day_008/index.js` and a README.
+- Keep calculation functions pure and return values instead of printing.
+- Test normal input and division by zero.
 
-Build arithmetic functions for addition, subtraction, multiplication, and division. Export or group the functions so the main program only coordinates input and output. Decide how division by zero should behave.
+### Tasks
 
-### Day 9: Counter Factory
+- Write function declarations and function expressions.
+- Add parameters and return values.
+- Give parameters meaningful defaults.
+- Separate calculation from display logic.
 
-Write a function that returns `increment`, `decrement`, and `value` operations while keeping the counter value private through a closure. Test that two counters do not share state.
+### Challenge
 
-### Day 10: Library Catalog
+Build a modular calculator with addition, subtraction, multiplication, division, and a clear invalid-operation response.
 
-Represent books as objects inside an array. Implement functions to add a book, find a book by title, check it out, and return it. Use destructuring and object spread for updates without accidental mutation.
+## Day 9: Scope and Closures
 
-### Day 11: Data Pipeline
+### Requirements
 
-Given an array of records, filter invalid entries, transform the remaining values, and reduce them into a summary. Explain when each array method is appropriate and avoid changing the original input.
+- Create `src/day_009/index.js` with a counter factory.
+- Prove that two counters keep separate private state.
+- Add tests for increment, decrement, and reset.
 
-### Day 12: JSON Report Tool
+### Tasks
 
-Create a small Node.js command-line program that reads JSON from a local file using `fs/promises` and `path`, then prints a useful summary. Handle a missing file and malformed JSON clearly.
+- Identify global, function, and block scope.
+- Create a closure that remembers a value.
+- Use `let` inside a factory instead of exposing state directly.
+- Add configurable steps with a default parameter.
 
-### Day 13: Browser To-Do List
+### Challenge
 
-Create a small HTML page and JavaScript module that accepts a task, renders it, marks it complete, and removes it. Keep application state separate from DOM rendering.
+Build a counter factory that returns `increment`, `decrement`, `reset`, and `value` operations without exposing the internal number.
 
-### Day 14: Interactive Dashboard
+## Day 10: Objects and Destructuring
 
-Combine objects, array methods, functions, and DOM events into a dashboard that displays a collection summary. Include loading, empty, and invalid-input states even if the data is local.
+### Requirements
 
-## Daily Deliverables
+- Create `src/day_010/index.js` with book objects and catalog functions.
+- Avoid mutating the original object when updating availability.
+- Test missing titles and duplicate identifiers.
 
-- A runnable entry point such as `src/day_008/index.js`.
-- A short `src/day_NNN/README.md` explaining the objective and approach.
-- At least one unit test in `tests/` for the main behavior.
-- One normal-case and one edge-case check.
-- A note about scope, mutation, or design choices.
+### Tasks
 
-Run a Node task with `node src/day_008/index.js`, or open the browser task through its HTML entry point.
+- Create objects with properties and methods.
+- Read nested values safely.
+- Use object destructuring and shorthand properties.
+- Update objects with spread syntax.
+
+### Challenge
+
+Build a library catalog that can add a book, find a book, check it out, return it, and report unavailable books.
+
+## Day 11: Higher-Order Array Methods
+
+### Requirements
+
+- Create `src/day_011/index.js` with a data pipeline.
+- Use `map`, `filter`, and `reduce` at least once.
+- Test invalid records and an empty data set.
+
+### Tasks
+
+- Filter records using a predicate function.
+- Map records into a new shape.
+- Reduce records into a total or grouped summary.
+- Confirm the source array is unchanged.
+
+### Challenge
+
+Build a sales report that removes invalid transactions, calculates totals, finds the best seller, and returns a summary object.
+
+## Day 12: Node.js Built-ins and JSON
+
+### Requirements
+
+- Create `src/day_012/index.js` and a small JSON fixture.
+- Read the fixture with `fs/promises` and construct paths with `path`.
+- Handle a missing file and malformed JSON.
+
+### Tasks
+
+- Import a Node.js built-in using ES module syntax.
+- Read text asynchronously and parse JSON.
+- Convert parsed data into a report.
+- Catch and classify file and parsing errors.
+
+### Challenge
+
+Build a JSON report tool that reads a local collection and prints item count, totals, and a useful summary.
+
+## Day 13: DOM Manipulation
+
+### Requirements
+
+- Create a browser entry point and `src/day_013/index.js`.
+- Support adding, completing, and removing tasks.
+- Include empty-list and invalid-input states.
+
+### Tasks
+
+- Select elements with `querySelector`.
+- Read form input and prevent default submission.
+- Create, update, and remove DOM elements.
+- Keep task state separate from the rendering function.
+
+### Challenge
+
+Build a browser to-do list with a form, visible task count, completion controls, and delete controls.
+
+## Day 14: Interactive Dashboard
+
+### Requirements
+
+- Create `src/day_014/` with a browser entry point and README.
+- Include derived totals, filters, and an empty state.
+- Add at least one test for a pure data function.
+
+### Tasks
+
+- Store dashboard data as an array of objects.
+- Derive counts with `filter` and `reduce`.
+- Render the same state after each user action.
+- Handle invalid input without breaking the interface.
+
+### Challenge
+
+Build an interactive dashboard that displays a collection, summary totals, a filter control, and a clear empty state.
+
+## Week 2 Completion Check
+
+- Each challenge separates data logic from input or display logic.
+- Days 8-12 have Node-runnable entry points; Days 13-14 have browser entry points.
+- Tests cover closures, object updates, array pipelines, and at least one error path.
+- You can explain scope, closures, mutation, and higher-order functions.
